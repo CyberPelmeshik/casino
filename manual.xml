@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="ru">
+  <title>Справочное руководство программиста. Проект Интернет-казино</title>
+
+  <chapter xml:id="intro">
+    <title>Краткое описание продукта</title>
+    <para>Проект Интернет-казино представляет собой учебное программное приложение, моделирующее основные подсистемы онлайн-казино: работу с пользователями, игровыми сессиями, балансом игрока и игровыми модулями.</para>
+    <para>Приложение построено по модульному принципу. Каждый важный участок логики вынесен в отдельный Python-модуль, что упрощает сопровождение системы и ее дальнейшее расширение.</para>
+    <para>В системе предусмотрены механизмы регистрации и аутентификации пользователей, а также хранение основных данных профиля игрока. Это формирует основу для дальнейшей работы с игровыми и финансовыми подсистемами.</para>
+    <para>Финансовая часть включает учет баланса, операции пополнения и вывода средств, а также историю движений по счету. Игровая часть позволяет моделировать игровые сессии и отдельные механики, такие как рулетка.</para>
+    <para>Для повышения качества сопровождения проекта в исходный код встроены docstring-комментарии, а также создан отдельный DocBook-документ, который может использоваться как техническое руководство для программистов.</para>
+  </chapter>
+
+  <chapter xml:id="modules">
+    <title>Состав модулей</title>
+    <itemizedlist>
+      <listitem><para>Каталог игр и лобби</para></listitem>
+      <listitem><para>Управление пользователями и аутентификация</para></listitem>
+      <listitem><para>Профиль игрока и настройки</para></listitem>
+      <listitem><para>Кошелек и учет баланса</para></listitem>
+      <listitem><para>Платежи: депозиты и вывод средств</para></listitem>
+      <listitem><para>Игровое ядро и управление сессиями</para></listitem>
+      <listitem><para>Игры: рулетка, блэкджек, баккара, покер</para></listitem>
+      <listitem><para>Бонусы, акции и промокоды</para></listitem>
+      <listitem><para>Административная панель</para></listitem>
+      <listitem><para>Отказоустойчивость и восстановление сессий</para></listitem>
+    </itemizedlist>
+  </chapter>
+
+  <chapter xml:id="use-cases">
+    <title>Сценарии использования</title>
+
+    <section xml:id="scenario-user">
+      <title>Сценарий 1. Регистрация и подтверждение пользователя</title>
+      <para>Пользователь создается в системе, после чего подтверждает свою электронную почту.</para>
+      <programlisting language="python"><![CDATA[
+user = User("player1", "player1@example.com")
+user.verify_email()
+print(user)
+      ]]></programlisting>
+    </section>
+
+    <section xml:id="scenario-wallet">
+      <title>Сценарий 2. Пополнение и списание средств</title>
+      <para>Игрок пополняет кошелек, а затем выполняет списание средств для игровой ставки.</para>
+      <programlisting language="python"><![CDATA[
+wallet = Wallet(100)
+wallet.deposit(50)
+wallet.withdraw(30)
+print(wallet.balance)
+print(wallet.history)
+      ]]></programlisting>
+    </section>
+
+    <section xml:id="scenario-roulette">
+      <title>Сценарий 3. Ставка в рулетке</title>
+      <para>Игрок выбирает число, после чего игровой модуль проводит вращение рулетки и возвращает результат.</para>
+      <programlisting language="python"><![CDATA[
+game = RouletteGame()
+result = game.place_bet(17)
+print(result)
+      ]]></programlisting>
+    </section>
+  </chapter>
+</book>
